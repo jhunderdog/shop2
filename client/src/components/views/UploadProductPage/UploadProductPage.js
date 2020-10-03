@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, Input } from "antd";
-
+import FileUpload from "../../utils/FileUpload";
 const { TextArea } = Input;
 const Continents = [
   { key: 1, value: "Africa" },
@@ -38,7 +38,7 @@ function UploadProductPage() {
         <h2>여행 상품 업로드</h2>
       </div>
       <Form>
-        {/* DropZone         */}
+        <FileUpload />
         <br />
         <br />
         <label>이름</label>
