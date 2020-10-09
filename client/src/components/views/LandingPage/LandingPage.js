@@ -4,6 +4,8 @@ import axios from "axios";
 import { Icon, Col, Card, Row, Carousel } from "antd";
 import { Meta } from "antd/lib/list/Item";
 import ImageSlider from "../../utils/ImageSlider";
+import { continents } from "./Sections/Datas"
+import CheckBox from "./Sections/CheckBox"
 
 function LandingPage() {
   const [Products, setProducts] = useState([]);
@@ -61,9 +63,11 @@ function LandingPage() {
           Let's Travel Anywhere
           <Icon type="rocket" />
         </h2>
-        <Row gutter={[16, 16]}>{renderCards}</Row>
       </div>
+      <CheckBox list={continents}/>
+      <Row gutter={[16, 16]}>{renderCards}</Row>
       
+      <br/>
       {PostSize >= Limit &&
       <div style={{display:"flex", justifyContent: "center" }}>
         <button onClick={loadMoreHandler}>더보기</button>
