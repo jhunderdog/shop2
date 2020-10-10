@@ -4,8 +4,9 @@ import axios from "axios";
 import { Icon, Col, Card, Row, Carousel } from "antd";
 import { Meta } from "antd/lib/list/Item";
 import ImageSlider from "../../utils/ImageSlider";
-import { continents } from "./Sections/Datas"
+import { continents, price } from "./Sections/Datas"
 import CheckBox from "./Sections/CheckBox"
+import RadioBox from "./Sections/RadioBox";
 
 function LandingPage() {
   const [Products, setProducts] = useState([]);
@@ -79,7 +80,15 @@ function LandingPage() {
           <Icon type="rocket" />
         </h2>
       </div>
-      <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")}/> 
+      <Row gutter={[16,16]}>
+        <Col lg={12} xs={24}>
+        <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")}/> 
+        </Col>
+        <Col lg={12} xs={24}>
+          <RadioBox list={price} handleFilters={filters => handleFilters(filters, "price")}/>
+        </Col>
+      </Row>
+      
       <Row gutter={[16, 16]}>{renderCards}</Row>
       
       <br/>
