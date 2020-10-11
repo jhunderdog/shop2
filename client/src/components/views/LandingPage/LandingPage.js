@@ -4,9 +4,10 @@ import axios from "axios";
 import { Icon, Col, Card, Row, Carousel } from "antd";
 import { Meta } from "antd/lib/list/Item";
 import ImageSlider from "../../utils/ImageSlider";
-import { continents, price } from "./Sections/Datas"
-import CheckBox from "./Sections/CheckBox"
+import { continents, price } from "./Sections/Datas";
+import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
+import SearchFeature from "./Sections/SearchFeature";
 
 function LandingPage() {
   const [Products, setProducts] = useState([]);
@@ -14,6 +15,7 @@ function LandingPage() {
   const [Limit, setLimit] = useState(8);
   const [PostSize, setPostSize] = useState();
   const [Filters, setFilters] = useState({continents:[], price:[]})
+  const [SearchTerm, setSearchTerm] = useState();
 
   useEffect(() => {
     let body = {
@@ -85,8 +87,13 @@ function LandingPage() {
     }
     showFilteredResults(newFilters)
     setFilters(newFilters)
+
   }
-  
+
+  const updateSearchTerm = (newSearchTerm) => (
+    setSearchTerm(newSearchTerm)
+  )
+
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
@@ -103,7 +110,9 @@ function LandingPage() {
         <RadioBox list={price} handleFilters={filters => handleFilters(filters, "price")}/>
         </Col>
       </Row>
-      
+      <div style={{display:'flex', justifyContent:"flex-end", margin:"1rem auto"}}>
+      <SearchFeature refreshFunction={updateSearchTerm}/>
+      </div>
       <Row gutter={[16, 16]}>{renderCards}</Row>
       
       <br/>
