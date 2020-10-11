@@ -8,6 +8,7 @@ function SearchFeature(props) {
     const searchHandler = (event) => {
         setSearchTerm(event.target.value)
         props.refreshFunction(event.target.value)
+        console.log(event.target.value)
     }
     return (
         <div>
