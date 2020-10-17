@@ -54,6 +54,7 @@ function CartPage(props) {
             }
         })
     }
+    
     return (
         <div style={{width:'85%', margin: '3rem auto'}}>
             <h1>My Cart</h1>
